@@ -10,3 +10,5 @@ shell:
   install:
   - apt update
   - apt install -y curl
+  setup:
+  - echo "Hello, world"
