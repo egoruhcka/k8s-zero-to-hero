@@ -28,3 +28,4 @@ import:
 - image: build
   add: /app/static
   to: /static
+  after: install
