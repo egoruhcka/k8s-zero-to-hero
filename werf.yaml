@@ -21,3 +21,10 @@ import:
   add: /goapp
   to: /goapp
   after: install
+- image: build
+  add: /app/templates
+  to: /templates
+  after: install
+- image: build
+  add: /app/static
+  to: /static
