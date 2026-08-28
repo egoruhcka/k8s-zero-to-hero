@@ -1,18 +1,20 @@
+{{ $name := .Chart.Name }}
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web
+  name: {{ $name }}-web
   labels:
-    app: web
+    app: {{ $name }}-web
 spec:
-  replicas: 3
+  replicas: {{ .Values.app.replicas }}
   selector:
     matchLabels:
-      app: web
+      app: {{ $name }}-web
   template:
     metadata:
       labels:
-        app: web
+        app: {{ $name }}-web
     spec:
       imagePullSecrets:
       - name: registrysecret
@@ -21,4 +23,4 @@ spec:
         image: {{ .Values.werf.image.app }}
         command: ["/goapp"]
         ports:
-        - containerPort: 80
+        - containerPort: {{ .Values.app.containerPort }}

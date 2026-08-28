@@ -1,16 +1,16 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: web
+  name: {{ .Chart.Name }}-web
 spec:
   rules:
-  - host: web.test
+  - host: {{ .Values.app.domain }}
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: app
+            name: {{ .Chart.Name }}-app
             port:
-              number: 80
+              number: {{ .Values.app.servicePort }}
