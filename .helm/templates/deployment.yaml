@@ -34,7 +34,7 @@ spec:
         ports:
         - name: http
           containerPort: {{ .Values.nginx.targetPort }}
-        VolumeMounts:
+        volumeMounts:
         - name: nginx-config
           mountPath: /etc/nginx/nginx.conf
           subPath: nginx.conf
